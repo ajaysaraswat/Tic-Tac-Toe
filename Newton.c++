@@ -1,25 +1,55 @@
-#include<iostream>
-#include<math.h>
+#include <iostream>
 using namespace std;
 
-int main(){
-    float x;
-    float R;
-    cout<<"enter the value of R";
-    cin>>R;
-    cout<<"Enter the value of initial root";
-    cin>>x;
-    float a=0,b=0,c,d,y,prev=0;
-    prev=0;
-    int t=0;
-   while(prev!=y){
-    prev=y;
-   a=(1/(pow(x,0.5)))+0.4-(4*log10(R*pow(x,0.5)));
-   b=-(0.5/pow(x,1.5))-(0.8685/(R*pow(x,0.5)));
-   y=x-(a/b);
-   cout<<y<<endl;
-   x=y;
-   
+void printPattern(int n)
+{
+    int half = (n + 1) / 2;
+
+    // Print the first half of the pattern
+    for (int i = 1; i <= half; i++)
+    {
+        for (char ch = 'A'; ch < 'A' + i; ch++)
+        {
+            cout << ch;
+        }
+        cout << endl;
+    }
+
+    // Print the second half of the pattern
+    if (n % 2 == 0)
+    {
+        for (int i = half; i > 0; i--)
+        {
+            for (char ch = 'A'; ch < 'A' + i; ch++)
+            {
+                cout << ch;
+            }
+            cout << endl;
+        }
+    }
+    else
+    {
+        for (int i = half - 1; i > 0; i--)
+        {
+            for (char ch = 'A'; ch < 'A' + i; ch++)
+            {
+                cout << ch;
+            }
+            cout << endl;
+        }
     }
 }
 
+int main()
+{
+    int n;
+
+    // Ask the user to enter the value of N
+    cout << "Enter the value of N: ";
+    cin >> n;
+
+    // Print the pattern
+    printPattern(n);
+
+    return 0;
+}
